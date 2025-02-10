@@ -1,8 +1,4 @@
-import Image from "next/image";
-
 import '@/pages/index.css';
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 export default function Home() {
   return (

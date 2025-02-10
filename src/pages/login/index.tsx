@@ -12,7 +12,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center">
         <main>
           <div className="grid items-center md:content-around grid-cols-1 grid-rows-2 gap-4">
-            <div className="flex justify-center items-center text-3xl">This is bkm's Todo App</div>
+            <div className="flex justify-center items-center text-3xl">This is bkm&apos;s Todo App</div>
             <div className="flex justify-center items-center">
               <Button variant={'outline'} onClick={() => signIn()}>
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
