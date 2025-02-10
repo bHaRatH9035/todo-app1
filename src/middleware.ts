@@ -1,17 +1,26 @@
+import { decode } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
-  const token = request.cookies.get('token')?.value || '';
+export async function middleware(request: NextRequest) {
+  const sessionToken = request.cookies.get('next-auth.session-token');
+  const token = await decode({
+    token: sessionToken?.value, secret: process.env.NEXTAUTH_SECRET || ''
+  })
+  const path = request.nextUrl.pathname;
+  console.log('token...', token)
   
-  if (!token) {
-    console.log('token not found ', token, process.env.GOOGLE_OAUTH_CLIENT_SECRET);
+  if (!token && path !== '/login') {
+    console.log('token not found ', token);
     return NextResponse.redirect(new URL('/login', request.url));
+  } else if (token && (path === '/login')) {
+    return NextResponse.redirect(new URL('/', request.url));
   }
-  return NextResponse.rewrite(new URL('/', request.url));
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    '/'
+    '/',
+    '/login'
   ]
 }
