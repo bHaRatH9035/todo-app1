@@ -24,7 +24,6 @@ export default function Home() {
           </div>
         </main>
       </div>
-      <div>{JSON.stringify(process.env)}</div>
     </div>
   );
 }
