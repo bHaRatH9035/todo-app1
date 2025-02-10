@@ -1,6 +1,9 @@
 import '@/pages/index.css';
+import { getSession } from 'next-auth/react';
 
 export default function Home() {
+  const session = getSession();
+  console.log('session data ', session)
   return (
     <div>
       {/* <div className="min-h-screen flex items-center justify-center">
